@@ -26,9 +26,10 @@ describe("Quiz", function(){
 
     });
 
-    it("produces the first question in the list of questions", function(){
-        expect(quiz.askQuestion()).toEqual("first question");
+    it("produces the  question listed at index 0 : the first question", function(){
+        expect(quiz.askQuestion(0)).toEqual("first question");
     });
+
 
 
 
