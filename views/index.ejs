@@ -1,1 +1,9 @@
-<h1>INDEX PAGE RENDERED VIA INDEX.EJS</h1>
+
+<% include partials/header %>
+
+<h1>Start the game by clicking on the button</h1>
+<form action = "/play/0" method = "post">
+    <input type="submit" name="startGame" value="Start Game" />
+</form>
+
+<% include partials/footer %>
