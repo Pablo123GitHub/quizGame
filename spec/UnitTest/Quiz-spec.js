@@ -52,6 +52,11 @@ describe("Quiz", function(){
         expect(quiz.isCorrectAnswer("answer to second q")).toBe(true);
     });
 
+    it("shows index of the current question", function(){
+        quiz.askQuestion(1);
+        expect(quiz.showIndex()).toEqual(1);
+    })
+
 
 
 
