@@ -32,6 +32,17 @@ describe("Quiz", function(){
         expect(quiz.askQuestion(0)).toEqual("first question");
     });
 
+    it("check answer is correct for the specific index the question has just been asked", function(){
+        quiz.askQuestion(0);
+        expect(quiz.showAnswer("wrong answer")).toEqual("answer to first q");
+    });
+
+    it("check answer is correct for the specific index the question has just been asked", function(){
+        quiz.askQuestion(1);
+        expect(quiz.showAnswer("wrong answer")).toEqual("answer to second q");
+    });
+
+
 
 
 
