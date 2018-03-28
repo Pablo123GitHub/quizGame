@@ -5,6 +5,11 @@ var session = require('express-session');
 var data = require('./data/data.js');
 var Quiz = require('./lib/Quiz.js');
 
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
 app.use(express.static('public'));
 app.use(session({
     secret: 'this-is-a-secret-token',
@@ -43,7 +48,8 @@ app.post("/answer/:numberanswer", function(req,res){
    var sessData = req.session;
    var numberAnswer = req.params.numberanswer;
    var indexNumber = String(sessData.indexNumber);
-   console.log(sessData);
+      console.log("REQUEST", req);
+      console.log("RESPONSE", res);
    res.redirect(`/answer/${indexNumber}`);
 
 });
