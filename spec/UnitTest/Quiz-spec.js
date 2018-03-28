@@ -34,17 +34,23 @@ describe("Quiz", function(){
 
     it("check answer is correct for the index ZERO for which the question has just been asked", function(){
         quiz.askQuestion(0);
-        expect(quiz.showAnswer("wrong answer")).toEqual("answer to first q");
+        expect(quiz.showAnswer()).toEqual("answer to first q");
     });
 
     it("check answer is correct for the index ONE for which the question has just been asked", function(){
         quiz.askQuestion(1);
-        expect(quiz.showAnswer("wrong answer")).toEqual("answer to second q");
+        expect(quiz.showAnswer()).toEqual("answer to second q");
     });
 
+    it("returns false if the provided answer is not correct for very last question asked", function(){
+        quiz.askQuestion(1);
+        expect(quiz.checkAnswer("this is the wrong answer")).toBe(false);
+    });
 
-
-
+    it("returns true if the provided answer is correct for very last question asked", function(){
+        quiz.askQuestion(1);
+        expect(quiz.checkAnswer("answer to second q")).toBe(true);
+    });
 
 
 
