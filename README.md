@@ -50,12 +50,24 @@ so that tech-savvy players can't cheat.
 
 ## Getting Started
 
-From Terminal (in the root folder): 
+
+From Terminal (in the root folder), we can install the dependencies with : 
 
 ```
 npm install 
-npm start
 
+```
+
+In order to run the app, the [nodemon](https://github.com/remy/nodemon) package needs to be installed globally :
+
+``` 
+npm install -g nodemon
+```
+
+Then you can run the app with :
+
+``` 
+npm start
 ```
 
 The app should then run on http://localhost:3000/
@@ -75,8 +87,10 @@ In order to run the tests you need to install [jasmine-node](https://github.com/
 npm install jasmine-node -g
 ```
 
-Before running the tests, you need to make sure that the application is running : 
-Two Terminal instances are necessary : one to run the app, and the other one to run the tests.
+Before running the tests, the application needs to be running. 
+two Terminal instances are necessary : one to run the app, and the other one to run the tests.
+
+First : 
 
 ```
 npm start
