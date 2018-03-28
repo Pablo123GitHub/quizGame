@@ -1,0 +1,12 @@
+<h1>You are now playing !!!</h1>
+<div id="game_div">
+</div>
+
+<form action =<%= indexUp %>  method = "post">
+<input type="submit" name="nextQuestions" value="Next Question" />
+</form>
+
+<script type="text/javascript" >
+    var card = new Card(<%- JSON.stringify(questionAtIndex) %>);
+    card.buildCard();
+</script>

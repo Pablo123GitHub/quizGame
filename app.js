@@ -23,13 +23,19 @@ app.post("/play/:number", function(req, res){
    var sessData = req.session;
    var number = req.params.number;
    var indexUp = parseInt(number) +1;
+   sessData.indexUp = indexUp;
    sessData.pathUp = "/play/" + String(indexUp)
     sessData.indexNumber = number;
     res.redirect(`/play/${number}`);
 });
 
 app.get("/play/:number", function(req, res){
-   res.send("hey well done this is /play/0")
+    var sessData = req.session;
+    var quiz = new Quiz(data);
+    sessData.quiz = quiz ;
+    console.log(req.session)
+   res.render("question", {indexUp: sessData.indexUp,
+       questionAtIndex: sessData.indexUp})
 });
 
 app.listen(3000, function(){
