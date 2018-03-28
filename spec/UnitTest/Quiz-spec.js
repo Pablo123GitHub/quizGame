@@ -1,9 +1,11 @@
 "use strict";
 
-var Quiz = require('../lib/Quiz.js');
+var Quiz = require('../../lib/Quiz.js');
 
 
 describe("Quiz", function(){
+    console.log("UNIT TESTING WITH JASMINE JS");
+    console.log("****************************");
     var quiz ;
     var data;
 
@@ -26,7 +28,7 @@ describe("Quiz", function(){
 
     });
 
-    it("produces the  question listed at index 0 : the first question", function(){
+    it("outputs the  question listed at index 0 in the data array", function(){
         expect(quiz.askQuestion(0)).toEqual("first question");
     });
 
