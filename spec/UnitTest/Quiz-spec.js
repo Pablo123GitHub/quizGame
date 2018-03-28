@@ -44,12 +44,12 @@ describe("Quiz", function(){
 
     it("returns false if the provided answer is not correct for very last question asked", function(){
         quiz.askQuestion(1);
-        expect(quiz.checkAnswer("this is the wrong answer")).toBe(false);
+        expect(quiz.isCorrectAnswer("this is the wrong answer")).toBe(false);
     });
 
     it("returns true if the provided answer is correct for very last question asked", function(){
         quiz.askQuestion(1);
-        expect(quiz.checkAnswer("answer to second q")).toBe(true);
+        expect(quiz.isCorrectAnswer("answer to second q")).toBe(true);
     });
 
 
