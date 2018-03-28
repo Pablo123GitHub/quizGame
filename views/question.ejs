@@ -1,12 +1,21 @@
+<% include partials/header %>
+
 <h1>You are now playing !!!</h1>
 <div id="game_div">
 </div>
 
-<form action =<%= indexUp %>  method = "post">
-<input type="submit" name="nextQuestions" value="Next Question" />
+<form class="inputClass" action="/answer/:numberanswer" method="post">
+    <input class="answer_submission" placeholder="your answer" type="text" name="answerSubmission"><br> <br>
+
+    <input class="submit" type="submit" value="Submit" >
 </form>
+
+
 
 <script type="text/javascript" >
     var card = new Card(<%- JSON.stringify(questionAtIndex) %>);
     card.buildCard();
 </script>
+
+<% include partials/footer %>
+

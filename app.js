@@ -31,11 +31,27 @@ app.post("/play/:number", function(req, res){
 
 app.get("/play/:number", function(req, res){
     var sessData = req.session;
-    var quiz = new Quiz(data);
-    sessData.quiz = quiz ;
-    console.log(req.session)
+    sessData.quiz = new Quiz(data);
+    var quiz = sessData.quiz;
+    var indexQuestion = sessData.indexNumber;
+    console.log(quiz.askQuestion(sessData.indexNumber));
    res.render("question", {indexUp: sessData.indexUp,
-       questionAtIndex: sessData.indexUp})
+       questionAtIndex: quiz.askQuestion(indexQuestion)})
+});
+
+app.post("/answer/:numberanswer", function(req,res){
+   var sessData = req.session;
+   var numberAnswer = req.params.numberanswer;
+   var indexNumber = String(sessData.indexNumber);
+   console.log(sessData);
+   res.redirect(`/answer/${indexNumber}`);
+
+});
+
+app.get("/answer/:numberanswer", function(req,res){
+
+    res.send("THIS IS THE NUMBERANSWER PAGE")
+
 });
 
 app.listen(3000, function(){
