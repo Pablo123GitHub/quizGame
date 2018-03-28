@@ -11,6 +11,34 @@ input {
     font-size: 150%;
 }
 
+input.submit {
+    width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    box-shadow: 6px 6px 5px #999;
+    font-weight: bold;
+    background: #ffff00;
+    color: #000;
+    border-radius: 10px;
+    border: 1px solid #999;
+    font-size: 150%;
+}
+
+.answer_submission {
+    width: 200px;
+    padding: 20px;
+    cursor: text;
+    box-shadow: 6px 6px 5px #999;
+    font-weight: bold;
+    background: #ffff00;
+    color: #000;
+    border-radius: 10px;
+    border: 1px solid #999;
+    font-size: 150%;
+}
+
+
+
 /*create responsive container*/
 body{
     background-color: #e3e3e3;
@@ -63,4 +91,9 @@ body{
     border: thin solid #ccc;
     display: block;
     padding: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0px;
 }
