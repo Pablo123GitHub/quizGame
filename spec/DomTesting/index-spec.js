@@ -14,5 +14,7 @@ request('http://localhost:3000/', function (error, response, html) {
         const $ = cheerio.load(html);
         console.log("spec/DomTesting/" + path.basename(__filename));
         console.log($('h1').text() == "Start the game by clicking on the button");
+    } else {
+        console.log(error);
     }
 });

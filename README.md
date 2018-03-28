@@ -75,31 +75,37 @@ In order to run the tests you need to install [jasmine-node](https://github.com/
 npm install jasmine-node -g
 ```
 
-Once the above is installed, you can run the tests with : 
+Before running the tests, you need to make sure that the application is running : 
+Two Terminal instances are necessary : one to run the app, and the other one to run the tests.
+
+```
+npm start
+```
+
+Then run the tests: 
 
 ```
 npm test
 ```
 
+
+### More details about the tests : 
+
 Two parts for the tests : 
+
+- the tests located under spec/UnitTest are testing the logic 
+of our JavaScript models (using jasmine-node)
 
 - the tests located under spec/DomTesting are testing the DOM 
 in order to make sure that the page is displaying what we are 
 expecting it to display (using Cheerio and request)
 
-- the tests located under spec/UnitTest are testing the logic 
-of our JavaScript models (using jasmine-node)
-
-### More details about the tests : 
-
 I have used the nice verbose of jasmine-node to show information about the tests. 
-However, the DOM tests are not so nicely presented because I am simply leveraging 
-cheerio and request to check that we have the relevant content on the DOM. 
+It should display green messages: if it is green, it means that the tests are passing.
 
-When you run the "npm test" command on terminal, you will see the sleek nice green
-information from jasmine-node, whereas at the bottom you will see my console.log 
+Underneath the green jasmine messages, you will see many console.log 
 messages related to the DOM tests : you should see only `true` for the tests to pass.
-Any `false` listed in this section means that the test is failing.
+Any `false` listed in this section means that it is a failing test. 
 
 
 ## Author
