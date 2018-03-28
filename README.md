@@ -1,6 +1,6 @@
-# Quiz Game 
+# Quiz Game
 
-Tech test for HegartyMaths : Build a Quiz Game. 
+Tech test for HegartyMaths : Build a Quiz Game.
 
 
 # User stories
@@ -47,79 +47,95 @@ As a quiz master,
 I want to ensure the player can't find the answer by inspecting the page
 so that tech-savvy players can't cheat.
 ```
+# Bonus section
+
+How would you support different types of question? For example, some questions might:
+
+have more than one possible answer e.g. Name a US state capital
+require multiple answers - e.g. Name two of the six members of Monty Python.
 
 ## Getting Started
 
 
-From Terminal (in the root folder), we can install the dependencies with : 
+From Terminal (in the root folder), we can install the dependencies with :
 
 ```
-npm install 
+npm install
 
 ```
 
 In order to run the app, the [nodemon](https://github.com/remy/nodemon) package needs to be installed globally :
 
-``` 
+```
 npm install -g nodemon
 ```
 
 Then you can run the app with :
 
-``` 
+```
 npm start
 ```
 
 The app should then run on http://localhost:3000/
 
-### Technology used 
+### Technology used
 
 - [Node JS](https://nodejs.org/en/) with [Express](https://expressjs.com/)
-- Vanilla JavaScript and EJS (Express) templates on the frontend 
-- [Cheerio](https://github.com/cheeriojs/cheerio) and [request](https://github.com/request/request) to test the DOM 
+- Vanilla JavaScript and EJS (Express) templates on the frontend
+- [Cheerio](https://github.com/cheeriojs/cheerio) and [request](https://github.com/request/request) to test the DOM
 - [jasmine-node](https://github.com/mhevery/jasmine-node) to test the logic of the JavaScript objects
+- [Cypress](https://www.cypress.io/) : end-to-end testing with automated user interactions. 
 
 ### Testing
 
-In order to run the tests you need to install [jasmine-node](https://github.com/mhevery/jasmine-node) globally 
+In order to run the tests you need to install [jasmine-node](https://github.com/mhevery/jasmine-node) globally
 
 ```
 npm install jasmine-node -g
 ```
 
-Before running the tests, the application needs to be running. 
+Before running the tests, the application needs to be running.
 two Terminal instances are necessary : one to run the app, and the other one to run the tests.
 
-First : 
+First :
 
 ```
 npm start
 ```
 
-Then run the tests: 
+Then run the tests:
 
 ```
 npm test
 ```
 
+The above will run the unit tests which run tests on the JavaScript objects
+located under the lib folder.
 
-### More details about the tests : 
+In order to test the customer experience, cypress is being used:
 
-Two parts for the tests : 
+```
+npm run cypress:open
+```
 
-- the tests located under spec/UnitTest are testing the logic 
-of our JavaScript models (using jasmine-node)
 
-- the tests located under spec/DomTesting are testing the DOM 
-in order to make sure that the page is displaying what we are 
-expecting it to display (using Cheerio and request)
+### More details about the tests :
 
-I have used the nice verbose of jasmine-node to show information about the tests. 
+Three types of tests:
+
+- the tests located under spec/UnitTest are testing the logic
+of our JavaScript models (using jasmine-node). I have used the nice verbose of jasmine-node to show information about the tests.
 It should display green messages: if it is green, it means that the tests are passing.
 
-Underneath the green jasmine messages, you will see many console.log 
-messages related to the DOM tests : you should see only `true` for the tests to pass.
-Any `false` listed in this section means that it is a failing test. 
+- the tests located under spec/DomTesting are testing the DOM
+in order to make sure that the page is displaying what we are
+expecting it to display (using Cheerio and request). However this does
+not allow us to test any interactions with the browser. So I just created
+one test until I realised that there was no user experience testing
+
+- the tests located under the cypress/integration folder run automated tests. Upon running the ```npm run cypress:open``` command, a tool will open which will show the files in which the tests were written. Cypress will then pilot the testing
+as if a user was using the browser.
+
 
 
 ## Author
