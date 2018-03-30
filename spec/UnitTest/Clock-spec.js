@@ -37,6 +37,17 @@ jasmine.clock().install();
       expect(clock.getTimeStampFuture()).toEqual(expectedResult.getTime());
   });
 
+describe("Build the time display with hours/minutes/seconds", function() {
+  it("outputs '0h 0m 2s' format for the timer", function(){
+    expect(clock.formatTime(0,0,2)).toEqual("0h 0m 2s");
+  });
+
+
+});
+
+
+
+
 
 
 
