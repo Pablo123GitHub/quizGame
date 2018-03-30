@@ -32,10 +32,12 @@ jasmine.clock().install();
     var expectedResult = new Date("Sep 6, 2018 15:37:35");
       jasmine.clock().mockDate(dateTimeStart);
       jasmine.clock().mockDate(expectedResult)
-// here x time in the future is timeAddOn = 10 seconds
+
       spyOn(clock, "getTimeNow").and.returnValue(dateTimeStart.getTime());
       expect(clock.getTimeStampFuture()).toEqual(expectedResult.getTime());
   });
+
+
 
 
 

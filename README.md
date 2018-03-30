@@ -82,9 +82,8 @@ The app should then run on http://localhost:3000/
 
 - [Node JS](https://nodejs.org/en/) with [Express](https://expressjs.com/)
 - Vanilla JavaScript and EJS (Express) templates on the frontend
-- [Cheerio](https://github.com/cheeriojs/cheerio) and [request](https://github.com/request/request) to test the DOM
-- [jasmine-node](https://github.com/mhevery/jasmine-node) to test the logic of the JavaScript objects
-- [Cypress](https://www.cypress.io/) : end-to-end testing with automated user interactions. 
+- I first tried [jasmine-node](https://github.com/mhevery/jasmine-node) but then realised that they did not have all the syntax available for jasmine. So I switched to the [jasmine](https://jasmine.github.io/setup/nodejs.html) package by the same people who maintain jasmine
+- [Cypress](https://www.cypress.io/) : end-to-end testing with automated user interactions.
 
 ### Testing
 

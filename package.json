@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jasmine-node --verbose spec",
+    "test": "jasmine ",
     "start": "nodemon app.js",
     "cypress:open": "cypress open"
   },
