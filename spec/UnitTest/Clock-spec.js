@@ -51,6 +51,16 @@ var interval = dateTwo.getTime() - dateOne.getTime() ;
   expect(clock.extractHourFromMilSec(interval)).toEqual(3)
 });
 
+it("extracts minutes from time expressed in millisec", function(){
+  var dateOne = new Date("Sep 6, 2018 15:37:25");
+  var dateTwo = new Date("Sep 7, 2018 15:40:26");
+  jasmine.clock().mockDate(dateOne);
+  jasmine.clock().mockDate(dateTwo)
+var interval = dateTwo.getTime() - dateOne.getTime() ;
+
+  expect(clock.extractMinFromMilSec(interval)).toEqual(3);
+
+});
 
 
 
