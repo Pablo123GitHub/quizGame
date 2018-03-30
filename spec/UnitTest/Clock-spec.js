@@ -2,7 +2,7 @@
 var Clock = require('../../lib/Clock.js');
 
 describe("Clock", function(){
-var clock;
+var subject;
 var timerCallback;
 var timeAddOn;
 
@@ -10,7 +10,7 @@ var timeAddOn;
 
 jasmine.clock().install();
     timeAddOn = 10;
-    clock = new Clock(timeAddOn);
+    subject = new Clock(timeAddOn);
     timerCallback = jasmine.createSpy("timerCallback");
 
   });
@@ -23,8 +23,8 @@ jasmine.clock().install();
     var baseTime = new Date();
       jasmine.clock().mockDate(baseTime);
         jasmine.clock().tick(0);
-        expect(clock.getTimeNow()).toBeGreaterThan(baseTime.getTime()-4);
-        expect(clock.getTimeNow()).toBeLessThan(baseTime.getTime()+4);
+        expect(subject.getTimeNow()).toBeGreaterThan(baseTime.getTime()-4);
+        expect(subject.getTimeNow()).toBeLessThan(baseTime.getTime()+4);
   });
 
   it("gets date in the future which is 'timeCountDown' from now", function(){
@@ -33,11 +33,11 @@ jasmine.clock().install();
       jasmine.clock().mockDate(dateTimeStart);
       jasmine.clock().mockDate(expectedResult)
 
-      spyOn(clock, "getTimeNow").and.returnValue(dateTimeStart.getTime());
-      expect(clock.getTimeStampFuture()).toEqual(expectedResult.getTime());
+      spyOn(subject, "getTimeNow").and.returnValue(dateTimeStart.getTime());
+      expect(subject.getTimeStampFuture()).toEqual(expectedResult.getTime());
   });
 
-describe("Build the time display with hours/minutes/seconds", function() {
+describe("Build the timer display with hours/minutes/seconds", function() {
   var dateOne;
   var dateTwo;
   var interval;
@@ -51,23 +51,39 @@ describe("Build the time display with hours/minutes/seconds", function() {
   })
 
   it("outputs '0h 0m 2s' format for the timer", function(){
-    expect(clock.formatTime(0,0,2)).toEqual("0h 0m 2s");
+    expect(subject.formatTime(0,0,2)).toEqual("0h 0m 2s");
   });
 
   it("extracts hours from time expressed in milliseconds", function(){
 
-  expect(clock.extractHourFromMilSec(interval)).toEqual(3)
+  expect(subject.extractHourFromMilSec(interval)).toEqual(3)
 });
 
 it("extracts minutes from time expressed in millisec", function(){
 
-  expect(clock.extractMinFromMilSec(interval)).toEqual(3);
+  expect(subject.extractMinFromMilSec(interval)).toEqual(3);
 
 });
 
 it("extracts seconds from time expressed in millisec", function(){
-    expect(clock.extractSecFromMilSec(interval)).toEqual(7);
+    expect(subject.extractSecFromMilSec(interval)).toEqual(7);
   });
+
+it("outputs expired when the countDown ends", function(){
+
+  setTimeout(function() {
+    timerCallback();
+  }, 10000);
+
+  expect(timerCallback).not.toHaveBeenCalled();
+
+     jasmine.clock().tick(10001);
+
+     expect(timerCallback).toHaveBeenCalled();
+
+});
+
+
 
 
 });

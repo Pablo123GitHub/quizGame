@@ -4,6 +4,7 @@ var session = require('express-session');
 
 var data = require('./data/data.js');
 var Quiz = require('./lib/Quiz.js');
+var Clock = require('./lib/Clock.js');
 
 var bodyParser = require('body-parser');
 
@@ -29,7 +30,7 @@ app.post("/play/:number", function(req, res){
    var number = req.params.number;
    var indexUp = parseInt(number) +1;
    sessData.indexUp = indexUp;
-   sessData.pathUp = "/play/" + String(indexUp)
+   sessData.pathUp = "/play/" + String(indexUp);
     sessData.indexNumber = number;
     res.redirect(`/play/${number}`);
 });
@@ -39,7 +40,6 @@ app.get("/play/:number", function(req, res){
     sessData.quiz = new Quiz(data);
     var quiz = sessData.quiz;
     var indexQuestion = sessData.indexNumber;
-    console.log(quiz.askQuestion(sessData.indexNumber));
    res.render("question", {indexUp: sessData.indexUp,
        questionAtIndex: quiz.askQuestion(indexQuestion)})
 });
