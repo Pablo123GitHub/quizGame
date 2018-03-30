@@ -42,6 +42,17 @@ describe("Build the time display with hours/minutes/seconds", function() {
     expect(clock.formatTime(0,0,2)).toEqual("0h 0m 2s");
   });
 
+  it("extracts hours from time expressed in milliseconds", function(){
+var dateOne = new Date("Sep 6, 2018 15:37:25");
+var dateTwo = new Date("Sep 7, 2018 18:37:26");
+jasmine.clock().mockDate(dateOne);
+jasmine.clock().mockDate(dateTwo)
+var interval = dateTwo.getTime() - dateOne.getTime() ;
+  expect(clock.extractHourFromMilSec(interval)).toEqual(3)
+});
+
+
+
 
 });
 
