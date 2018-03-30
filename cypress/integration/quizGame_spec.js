@@ -20,4 +20,19 @@ describe('From clicking on the home page to the answer submission', function() {
             .should('include', 'answer/0')
   });
 
+  it('checks that the timer exists when you reach first question', function() {
+    cy.visit('http://127.0.0.1:3000/')
+
+    cy.get('form')
+      .should('contain', 'Start Game')
+
+    cy.get('input')
+      .click()
+      .url()
+      .should('include', "play/0")
+
+      cy.get('.timer_class')
+        .should('contain', 'timer placeholder')
+  });
+
 })

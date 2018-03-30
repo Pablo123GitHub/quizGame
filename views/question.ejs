@@ -1,21 +1,27 @@
 <% include partials/header %>
 
 <h1>You are now playing !!!</h1>
-<div id="game_div">
+<div >
+
+  <div id="timer_div_bis" >
+
+  </div>
+<div id="game_div" >
 </div>
 
-<form class="inputClass" action="/answer/:numberanswer" method="post">
+<form class="inputClass flexItem" action="/answer/:numberanswer" method="post" id="form_answer">
     <input class="answer_submission" placeholder="your answer" type="text" name="answerSubmission"><br> <br>
 
     <input class="submit" type="submit" value="Submit" >
 </form>
 
-
+</div>
 
 <script type="text/javascript" >
     var card = new Card(<%- JSON.stringify(questionAtIndex) %>);
     card.buildCard();
+    var timer = new Timer();
+    timer.buildTimer("timer placeholder");
 </script>
 
 <% include partials/footer %>
-

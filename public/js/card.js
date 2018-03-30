@@ -13,18 +13,17 @@
         buildCard = function(){
             var flipDiv = document.createElement("div"),
                 frontValDiv = document.createElement("div"),
-                backValDiv = document.createElement("div"),
-                catDiv = document.createElement("div");
+                backValDiv = document.createElement("div");
+
             flipDiv.className = "flip";
             frontValDiv.className = "front_val";
+            frontValDiv.id = "front_val"
             backValDiv.className = "back_val";
-            catDiv.className = "cat_val";
 
             frontValDiv.innerHTML = questionInput;
             // backValDiv.innerHTML = answerInput;
 
             cardFront.appendChild(frontValDiv);
-            cardFront.appendChild(catDiv);
             cardBack.appendChild(backValDiv);
 
             flipDiv.appendChild(cardFront);
