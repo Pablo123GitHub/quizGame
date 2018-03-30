@@ -62,6 +62,15 @@ var interval = dateTwo.getTime() - dateOne.getTime() ;
 
 });
 
+it("extracts seconds from time expressed in millisec", function(){
+    var dateOne = new Date("Sep 6, 2018 15:37:25");
+    var dateTwo = new Date("Sep 7, 2018 15:37:32");
+    jasmine.clock().mockDate(dateOne);
+    jasmine.clock().mockDate(dateTwo)
+  var interval = dateTwo.getTime() - dateOne.getTime() ;
+
+    expect(clock.extractSecFromMilSec(interval)).toEqual(7);
+  });
 
 
 });
