@@ -27,6 +27,16 @@ jasmine.clock().install();
         expect(clock.getTimeNow()).toBeLessThan(baseTime.getTime()+4);
   });
 
+  it("gets date in the future which is 'timeCountDown' from now", function(){
+    var dateTimeStart = new Date("Sep 6, 2018 15:37:25");
+    var expectedResult = new Date("Sep 6, 2018 15:37:35");
+      jasmine.clock().mockDate(dateTimeStart);
+      jasmine.clock().mockDate(expectedResult)
+// here x time in the future is timeAddOn = 10 seconds
+      spyOn(clock, "getTimeNow").and.returnValue(dateTimeStart.getTime());
+      expect(clock.getTimeStampFuture()).toEqual(expectedResult.getTime());
+  });
+
 
 
 
