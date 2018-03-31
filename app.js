@@ -26,37 +26,38 @@ app.get("/", function(req,res){
 });
 
 app.post("/play/:number", function(req, res){
-   var sessData = req.session;
    var number = req.params.number;
-   var indexUp = parseInt(number) +1;
-   sessData.indexUp = indexUp;
-   sessData.pathUp = "/play/" + String(indexUp);
-    sessData.indexNumber = number;
     res.redirect(`/play/${number}`);
 });
 
 app.get("/play/:number", function(req, res){
-    var sessData = req.session;
-    sessData.quiz = new Quiz(data);
-    var quiz = sessData.quiz;
-    var indexQuestion = sessData.indexNumber;
-   res.render("question", {indexUp: sessData.indexUp,
-       questionAtIndex: quiz.askQuestion(indexQuestion)})
+    var session = req.session;
+    var indexQuestion = req.params.number;
+    var quiz = new Quiz(data);
+
+    session.indexQuestion = indexQuestion;
+    session.question = quiz.askQuestion(indexQuestion);
+    session.answer = quiz.showAnswer();
+
+   res.render("question", {
+     questionAtIndex: "question placeholder"})
 });
 
 app.post("/answer/:numberanswer", function(req,res){
-   var sessData = req.session;
-   var numberAnswer = req.params.numberanswer;
-   var indexNumber = String(sessData.indexNumber);
-      console.log("REQUEST", req);
-      console.log("RESPONSE", res);
-   res.redirect(`/answer/${indexNumber}`);
+  var session = req.session;
+  var numberAnswer = session.indexQuestion;
+  var quiz = new Quiz(data);
 
+  var answerSubmitted = req.body.answerSubmission;
+
+   res.redirect(`/answer/${numberAnswer}`);
 });
 
-app.get("/answer/:numberanswer", function(req,res){
+app.get("/answer/:numberanswer", function(req,res) {
+  var session = req.session;
+  var quiz = session.quiz;
 
-    res.send("THIS IS THE NUMBERANSWER PAGE")
+    res.render("answer")
 
 });
 
