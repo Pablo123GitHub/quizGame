@@ -55,49 +55,22 @@ describe("Build the timer display with hours/minutes/seconds", function() {
   });
 
   it("extracts hours from time expressed in milliseconds", function(){
-
   expect(subject.extractHourFromMilSec(interval)).toEqual(3)
 });
 
 it("extracts minutes from time expressed in millisec", function(){
-
   expect(subject.extractMinFromMilSec(interval)).toEqual(3);
-
 });
 
 it("extracts seconds from time expressed in millisec", function(){
     expect(subject.extractSecFromMilSec(interval)).toEqual(7);
   });
 
-it("outputs expired when the countDown ends", function(){
-
-  setTimeout(function() {
-    timerCallback();
-  }, 10000);
-
-  expect(timerCallback).not.toHaveBeenCalled();
-
-     jasmine.clock().tick(10001);
-
-     expect(timerCallback).toHaveBeenCalled();
-
+it("outputs '0h 0m 2s' with values extracted from milliseconds timeStamp", function(){
+  expect(subject.displayMilSecNiceFormat(interval)).toEqual("3h 3m 7s");
 });
 
 
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 });

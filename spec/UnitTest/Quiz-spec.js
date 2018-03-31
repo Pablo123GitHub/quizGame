@@ -2,7 +2,6 @@
 
 var Quiz = require('../../lib/Quiz.js');
 
-
 describe("Quiz", function(){
     console.log("UNIT TESTING WITH JASMINE JS");
     console.log("****************************");
@@ -61,8 +60,5 @@ describe("Quiz", function(){
         quiz.setIndex(2);
         expect(quiz.showAnswer()).toEqual("answer to third q")
     });
-
-
-
 
 })
