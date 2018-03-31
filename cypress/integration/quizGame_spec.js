@@ -52,8 +52,12 @@ describe('From clicking on the home page to the answer submission for the first 
           .get('#message_wrong_answer').should('not.contain', 'CONGRATULATIONS')
           .get('#message_wrong_answer').should('contain', 'This is not the correct answer')
           .get('#correct_answer').should('contain', 'racecar')
+          .get('#next_question')
+            .should('contain', 'Next Question')
 
     });
+
+
 
   })
 })

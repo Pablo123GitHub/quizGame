@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <% if (isCorrectAnswer) {%>
 <h1 id="message_congratulation"> The answer is correct. CONGRATULATIONS !!! </h1>
 <% } else{ %>
@@ -6,3 +8,11 @@
 
 <h2 id="correct_answer"> <%= correctAnswer %> </h2>
 <% }%>
+
+
+<form action = "/play/1" method = "post" id="next_question">
+    <input type="submit" name="startGame" value="Next Question" />
+</form>
+
+
+<% include partials/footer %>
