@@ -1,13 +1,13 @@
 module.exports = [{
-    q: "hey question",
-    a: "hey answer hey"
+    q: "Which of the following words is a palindrome: yacht, airplane, racecar, train?",
+    a: "racecar"
 },
     {
-        q: "2nd question",
-        a: "2nd answer"
+        q: "The beaver is the national emblem of which country?",
+        a: "Canada"
     },
     {
-        q: "3rd question",
-        a: "3rd answer"
+        q: "What is the name of Batman's butler?",
+        a: "Alfred"
     }
 ];

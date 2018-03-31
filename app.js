@@ -35,7 +35,6 @@ app.get("/play/:number", function(req, res){
     var indexQuestion = req.params.number;
     var quiz = new Quiz(data);
 
-
     session.indexQuestion = indexQuestion;
     quiz.setIndex(indexQuestion);
     session.question = quiz.askQuestion(indexQuestion);
@@ -53,14 +52,21 @@ app.post("/answer/:numberanswer", function(req,res){
   var quiz = new Quiz(data);
   quiz.setIndex(numberAnswer);
   var isCorrectAnswer = quiz.isCorrectAnswer(answerSubmitted);
+
+  session.isCorrectAnswer = isCorrectAnswer;
+
    res.redirect(`/answer/${numberAnswer}`);
 });
 
 app.get("/answer/:numberanswer", function(req,res) {
   var session = req.session;
-  var quiz = session.quiz;
+  var isCorrectAnswer = session.isCorrectAnswer;
+  var correctAnswer = session.answer;
 
-    res.render("answer")
+    res.render("answer", {
+      isCorrectAnswer: isCorrectAnswer,
+      correctAnswer: correctAnswer
+    })
 
 });
 

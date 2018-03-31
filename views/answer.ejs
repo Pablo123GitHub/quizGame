@@ -1,9 +1,8 @@
-<h1>THIS PAGE NEEDS TO SHOW THE NEXT QUESTION BUTTON</h1>
+<% if (isCorrectAnswer) {%>
+<h1 id="message_congratulation"> The answer is correct. CONGRATULATIONS !!! </h1>
+<% } else{ %>
+<h1 id="message_wrong_answer"> This is not the correct answer </h1>
+<h1 > The correct answer is  </h1>
 
-
-<p>if the answer is not correct </p>
-<p>the correct ANswer must be displayed</p>
-
-<p>if the answer IS correct </p>
-<p>Say Congratulations</p>
-<p>NO NEED TO SHOW THE CORRECT ANSWER</p>
+<h2 id="correct_answer"> <%= correctAnswer %> </h2>
+<% }%>
