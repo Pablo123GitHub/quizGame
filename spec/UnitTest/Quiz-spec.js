@@ -57,6 +57,11 @@ describe("Quiz", function(){
         expect(quiz.showIndex()).toEqual(1);
     })
 
+    it("sets the index of the quiz object", function(){
+        quiz.setIndex(2);
+        expect(quiz.showAnswer()).toEqual("answer to third q")
+    });
+
 
 
 
