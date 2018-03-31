@@ -76,22 +76,16 @@ Then you can run the app with :
 npm start
 ```
 
-The app should then run on http://localhost:3000/
+The app runs on http://localhost:3000/
 
 ### Technology used
 
 - [Node JS](https://nodejs.org/en/) with [Express](https://expressjs.com/)
 - Vanilla JavaScript and EJS (Express) templates on the frontend
-- I first tried [jasmine-node](https://github.com/mhevery/jasmine-node) but then realised that they did not have all the syntax available for jasmine. So I switched to the [jasmine](https://jasmine.github.io/setup/nodejs.html) package by the same people who maintain jasmine
+- I first tried [jasmine-node](https://github.com/mhevery/jasmine-node) but then realised that they did not have all the syntax available for jasmine in Node. So I switched to the [jasmine](https://jasmine.github.io/setup/nodejs.html) package.
 - [Cypress](https://www.cypress.io/) : end-to-end testing with automated user interactions.
 
 ### Testing
-
-In order to run the tests you need to install [jasmine-node](https://github.com/mhevery/jasmine-node) globally
-
-```
-npm install jasmine-node -g
-```
 
 Before running the tests, the application needs to be running.
 two Terminal instances are necessary : one to run the app, and the other one to run the tests.
@@ -108,8 +102,9 @@ Then run the tests:
 npm test
 ```
 
-The above will run the unit tests which run tests on the JavaScript objects
-located under the lib folder.
+The above command will run the unit tests located under spec/UnitTest: Clock-spec.js
+and Quiz-spec.js. Note that those tests are related to the JavaScript objects located under
+lib/ : Clock.js and Quiz.js
 
 In order to test the customer experience, cypress is being used:
 
@@ -117,24 +112,14 @@ In order to test the customer experience, cypress is being used:
 npm run cypress:open
 ```
 
-
 ### More details about the tests :
 
 Three types of tests:
 
-- the tests located under spec/UnitTest are testing the logic
-of our JavaScript models (using jasmine-node). I have used the nice verbose of jasmine-node to show information about the tests.
+- the tests located under spec/UnitTest are testing the logic:
 It should display green messages: if it is green, it means that the tests are passing.
 
-- the tests located under spec/DomTesting are testing the DOM
-in order to make sure that the page is displaying what we are
-expecting it to display (using Cheerio and request). However this does
-not allow us to test any interactions with the browser. So I just created
-one test until I realised that there was no user experience testing
-
-- the tests located under the cypress/integration folder run automated tests. Upon running the ```npm run cypress:open``` command, a tool will open which will show the files in which the tests were written. Cypress will then pilot the testing
-as if a user was using the browser.
-
+- the tests located under the cypress/integration folder run automated tests. Once you run the following command ```npm run cypress:open``` a new window opens. This window will be running a testing browser that will simulate all the actions of the user as described in the tests.  
 
 
 ## Author
@@ -149,3 +134,5 @@ as if a user was using the browser.
 [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-node-js-request-and-cheerio-to-set-up-simple-web-scraping)
 
 [Udemy](https://www.udemy.com/the-web-developer-bootcamp/)
+
+[Cypress examples](https://example.cypress.io/)
