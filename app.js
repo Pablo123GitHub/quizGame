@@ -35,21 +35,24 @@ app.get("/play/:number", function(req, res){
     var indexQuestion = req.params.number;
     var quiz = new Quiz(data);
 
+
     session.indexQuestion = indexQuestion;
+    quiz.setIndex(indexQuestion);
     session.question = quiz.askQuestion(indexQuestion);
     session.answer = quiz.showAnswer();
 
    res.render("question", {
-     questionAtIndex: "question placeholder"})
+     questionAtIndex: session.question})
 });
 
 app.post("/answer/:numberanswer", function(req,res){
   var session = req.session;
   var numberAnswer = session.indexQuestion;
-  var quiz = new Quiz(data);
-
   var answerSubmitted = req.body.answerSubmission;
 
+  var quiz = new Quiz(data);
+  quiz.setIndex(numberAnswer);
+  var isCorrectAnswer = quiz.isCorrectAnswer(answerSubmitted);
    res.redirect(`/answer/${numberAnswer}`);
 });
 
