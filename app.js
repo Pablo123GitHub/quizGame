@@ -54,6 +54,7 @@ app.post("/answer/:numberanswer", function(req,res){
   var isCorrectAnswer = quiz.isCorrectAnswer(answerSubmitted);
 
   session.isCorrectAnswer = isCorrectAnswer;
+  session.answerSubmitted = answerSubmitted;
 
    res.redirect(`/answer/${numberAnswer}`);
 });
@@ -62,10 +63,15 @@ app.get("/answer/:numberanswer", function(req,res) {
   var session = req.session;
   var isCorrectAnswer = session.isCorrectAnswer;
   var correctAnswer = session.answer;
+  var answerSubmitted = session.answerSubmitted;
+  var nextQuestionRoute = "/play/" + String(parseInt(session.indexQuestion) +1) ;
 
     res.render("answer", {
       isCorrectAnswer: isCorrectAnswer,
-      correctAnswer: correctAnswer
+      correctAnswer: correctAnswer,
+      answerSubmitted: answerSubmitted,
+      nextQuestionRoute: nextQuestionRoute
+
     })
 
 });

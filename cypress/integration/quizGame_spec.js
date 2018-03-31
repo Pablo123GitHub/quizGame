@@ -31,29 +31,40 @@ describe('From clicking on the home page to the answer submission for the first 
           .should('contain', 'timer placeholder')
     });
 
-    it('shows congratulate div element if answer correct + does not show the correct answer', function() {
+    it('shows congratulate div element if answer correct + does not show the correct answer and move on to the next question', function() {
 
         // https://on.cypress.io/submit
         cy.get('.inputClass')
           .find('[type="text"]').type('racecar')
         cy.get('.inputClass').submit()
+
           .get('#message_congratulation').should('contain', 'CONGRATULATIONS')
           .get('#correct_answer').should('not.contain', 'racecar')
+          .get('#next_question')
+            .should('contain', 'Next Question')
+            .click()
+
+        cy.url()
+            .should('include', 'play/1')
 
     });
 
-    it('shows the wrong answer message + show the correct first answer', function() {
+    it('shows the wrong answer message + show the correct first answer and move on to the next question', function() {
 
         // https://on.cypress.io/submit
         cy.get('.inputClass')
           .find('[type="text"]').type('WRONGANSWER')
         cy.get('.inputClass').submit()
 
-          .get('#message_wrong_answer').should('not.contain', 'CONGRATULATIONS')
-          .get('#message_wrong_answer').should('contain', 'This is not the correct answer')
+          .get('#message_congratulation').should('not.contain', 'CONGRATULATIONS')
+          .get('#message_wrong_answer').should('contain', 'is not the correct answer')
           .get('#correct_answer').should('contain', 'racecar')
           .get('#next_question')
             .should('contain', 'Next Question')
+            .click()
+
+        cy.url()
+            .should('include', 'play/1')
 
     });
 

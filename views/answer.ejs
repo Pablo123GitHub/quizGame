@@ -3,16 +3,17 @@
 <% if (isCorrectAnswer) {%>
 <h1 id="message_congratulation"> The answer is correct. CONGRATULATIONS !!! </h1>
 <% } else{ %>
-<h1 id="message_wrong_answer"> This is not the correct answer </h1>
+<h1 id="message_wrong_answer"> <%= answerSubmitted %> is not the correct answer </h1>
 <h1 > The correct answer is  </h1>
 
 <h2 id="correct_answer"> <%= correctAnswer %> </h2>
 <% }%>
 
 
-<form action = "/play/1" method = "post" id="next_question">
-    <input type="submit" name="startGame" value="Next Question" />
+<form action = <%= nextQuestionRoute %>   method = "post" >
+    <input type="submit" name="startGame" value="Next Question" id="next_question" />
 </form>
+
 
 
 <% include partials/footer %>
