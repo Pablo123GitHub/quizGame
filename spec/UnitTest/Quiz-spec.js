@@ -33,8 +33,6 @@ describe("Quiz", function(){
       }
     };
 
-    spyOn(clock, 'setIntervalCountDown');
-
         quiz = new Quiz(data, clock);
 
     });
@@ -69,12 +67,17 @@ describe("Quiz", function(){
     });
 
     describe("test the clock prototype from Quiz", function(){
-      it("sets time interval to the clock object inside Quiz", function(){
+      it("SETS time interval to the clock object inside Quiz", function(){
+        spyOn(clock, 'setIntervalCountDown');
         quiz.setClockInterval(10);
         expect(clock.setIntervalCountDown).toHaveBeenCalled();
 
       });
-
+      it("GETS time interval from the clock object inside Quiz", function(){
+        spyOn(clock, 'getIntervalMilSec');
+        quiz.showClockInterval();
+        expect(clock.getIntervalMilSec).toHaveBeenCalled();
+      });
 
     });
 
