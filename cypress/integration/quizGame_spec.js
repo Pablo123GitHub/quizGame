@@ -1,4 +1,4 @@
-describe('From clicking on the home page to the answer submission for the first question', function() {
+describe('Starting the game, answering the first question, the second one is displayed', function() {
   context('get the game started and submit answer', function(){
     beforeEach(function(){
       cy.visit('http://127.0.0.1:3000/')
@@ -67,6 +67,81 @@ describe('From clicking on the home page to the answer submission for the first 
             .should('include', 'play/1')
 
     });
+
+
+
+  });
+
+  context("Ends the game after answering last question + give score", function(){
+    beforeEach(function(){
+      cy.visit('http://127.0.0.1:3000/')
+
+      cy.get('form')
+        .should('contain', 'Start Game')
+
+      cy.get('input')
+        .click()
+        .url()
+        .should('include', "play/0")
+
+      cy.get('.inputClass')
+        .find('[type="text"]').type('WRONGANSWER')
+      cy.get('.inputClass').submit()
+
+
+      cy.get('#next_question')
+        .should('contain', 'Next Question')
+        .click()
+
+      cy.get('.inputClass')
+        .find('[type="text"]').type('WRONGANSWER')
+      cy.get('.inputClass').submit()
+
+      cy.get('#next_question')
+        .should('contain', 'Next Question')
+        .click()
+
+      cy.url()
+        .should('include', 'play/2')
+
+        cy.get('.inputClass')
+          .find('[type="text"]').type('WRONGANSWER')
+        cy.get('.inputClass').submit()
+
+        cy.url()
+          .should('include', "answer/2")
+
+
+
+    });
+
+    it("does not contain the Next Question button, and displays the Show Score button", function(){
+
+      cy.get('#next_question')
+        .should('not.contain', 'Next Question')
+
+      cy.get('#show_score')
+        .should('contain', 'Show Score')
+
+    });
+
+    it("takes you to the score page when you click on Show Score", function(){
+
+      cy.get('#show_score')
+        .should('contain', 'Show Score')
+        .click()
+
+      cy.url()
+        .should('include', 'score')
+
+    });
+
+
+
+
+
+
+
 
 
 

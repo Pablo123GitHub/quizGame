@@ -9,11 +9,18 @@
 <h2 id="correct_answer"> <%= correctAnswer %> </h2>
 <% }%>
 
+<% if (isLastQuestionAsked) {%>
 
-<form action = <%= nextQuestionRoute %>   method = "post" >
-    <input type="submit" name="startGame" value="Next Question" id="next_question" />
-</form>
+  <form action="/score"   method = "post" >
+      <input type="submit" name="show_score" value="Show Score" id="show_score" />
+  </form>
 
+<% } else{ %>
 
+  <form action = <%= nextQuestionRoute %>   method = "post" >
+      <input type="submit" name="startGame" value="Next Question" id="next_question" />
+  </form>
+
+<% }%>
 
 <% include partials/footer %>

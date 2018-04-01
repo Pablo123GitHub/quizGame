@@ -52,28 +52,37 @@ app.post("/answer/:numberanswer", function(req,res){
   var quiz = new Quiz(data);
   quiz.setIndex(numberAnswer);
   var isCorrectAnswer = quiz.isCorrectAnswer(answerSubmitted);
+  var isLastQuestionAsked = quiz.isLastQuestionAsked();
+
 
   session.isCorrectAnswer = isCorrectAnswer;
   session.answerSubmitted = answerSubmitted;
+  session.isLastQuestionAsked = isLastQuestionAsked;
 
    res.redirect(`/answer/${numberAnswer}`);
 });
 
 app.get("/answer/:numberanswer", function(req,res) {
   var session = req.session;
-  var isCorrectAnswer = session.isCorrectAnswer;
   var correctAnswer = session.answer;
   var answerSubmitted = session.answerSubmitted;
   var nextQuestionRoute = "/play/" + String(parseInt(session.indexQuestion) +1) ;
+
+  var isCorrectAnswer = session.isCorrectAnswer;
+  var isLastQuestionAsked = session.isLastQuestionAsked ;
 
     res.render("answer", {
       isCorrectAnswer: isCorrectAnswer,
       correctAnswer: correctAnswer,
       answerSubmitted: answerSubmitted,
-      nextQuestionRoute: nextQuestionRoute
-
+      nextQuestionRoute: nextQuestionRoute,
+      isLastQuestionAsked: isLastQuestionAsked
     })
 
+});
+
+app.post("/score", function(req, res){
+  res.render("score");
 });
 
 app.listen(3000, function(){
