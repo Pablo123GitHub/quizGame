@@ -1,4 +1,4 @@
-describe('Starting the game, answering the first question, the second one is displayed', function() {
+describe('Start the game, answer questions one after the other, then land on Score page once finished', function() {
   context('get the game started and submit answer', function(){
     beforeEach(function(){
       cy.visit('http://127.0.0.1:3000/')
@@ -84,7 +84,7 @@ describe('Starting the game, answering the first question, the second one is dis
 
   });
 
-  context("Ends the game after answering last question + give score", function(){
+  context("Ends the game after answering last question + go to score page", function(){
     beforeEach(function(){
       cy.visit('http://127.0.0.1:3000/')
 
