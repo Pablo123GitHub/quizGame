@@ -61,4 +61,8 @@ describe("Quiz", function(){
         expect(quiz.showAnswer()).toEqual("answer to third q")
     });
 
+    it("shows how many questions are included in the quiz", function(){
+      expect(quiz.questionsLength()).toEqual(3);
+    })
+
 })
