@@ -1,9 +1,9 @@
-# Quiz Game
+###  Quiz Game
 
 Tech test for HegartyMaths : Build a Quiz Game.
 
 
-# User stories
+### User stories
 
 ```
 As a player,
@@ -55,7 +55,7 @@ so that tech-savvy players can't cheat.
 - [Cypress](https://www.cypress.io/) : end-to-end testing with automated user interactions.
 
 
-## Getting Started
+### Getting Started
 
 
 From Terminal (in the root folder), we can install the dependencies with :
@@ -137,7 +137,7 @@ If we only see green dots on Terminal, it means that they are passing.
 
 _Note that I have left the examples provided by Cypress for information purposes but they have nothing to do with the app (integration/example_spec.js)_
 
-# Bonus section
+###  Bonus section
 
 How would you support different types of question? For example, some questions might:
 
@@ -149,12 +149,12 @@ If a question has multiple answers or require multiple answers, then I would nee
 Then maybe a new key ```type``` would have to be added to each JSON question object, and this key would let us know what type of question is asked. It will then be possible to find out what logic to use to find out whether it is the correct answer, or not.
 
 
-## Author
+###  Author
 
 [Pablo](https://github.com/Pablo123GitHub)
 
 
-## Resources used
+### Resources used
 
 [Lynda.com](https://www.lynda.com/JavaScript-tutorials/Vanilla-JavaScript-Binding-Propagation/636139-2.html)
 
