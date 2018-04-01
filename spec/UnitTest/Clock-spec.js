@@ -4,20 +4,23 @@ var Clock = require('../../lib/Clock.js');
 describe("Clock", function(){
 var subject;
 var timerCallback;
-var timeAddOn;
+var countDownInterval;
 
   beforeEach(function(){
 
 jasmine.clock().install();
-    timeAddOn = 10;
-    subject = new Clock(timeAddOn);
+    countDownInterval = 10;
+    subject = new Clock();
     timerCallback = jasmine.createSpy("timerCallback");
+    subject.setIntervalCountDown(countDownInterval);
 
   });
 
   afterEach(function() {
    jasmine.clock().uninstall();
  });
+
+
 
   it("gets timeNow : test with 8 millisecond tolerance", function(){
     var baseTime = new Date();
@@ -40,6 +43,12 @@ jasmine.clock().install();
   it("shows the countDown interval in milliseconds ", function(){
 
     expect(subject.getIntervalMilSec()).toEqual(10000);
+
+  });
+
+  it("sets time interval for the clock object", function(){
+    subject.setIntervalCountDown(20);
+    expect(subject.getIntervalMilSec()).toEqual(20000);
 
   });
 
