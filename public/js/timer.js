@@ -26,7 +26,8 @@ var countDownDate = new Date().getTime() + timeInterval;
   // If the count down is over, write some text
   if (distance < 0) {
       clearInterval(x);
-      document.getElementById("timer_div_bis").innerHTML = "EXPIRED";
+      document.getElementById("timer_div_bis").innerHTML = "Time is up, please click on Submit";
+      document.getElementById("input_answer_submission").disabled = true;
   }
 }, 1000);
 }
