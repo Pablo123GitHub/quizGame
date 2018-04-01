@@ -13,15 +13,18 @@ describe("Quiz", function(){
         data = [
             {
                 q:"first question",
-                a: "answer to first q"
+                a: "answer to first q",
+                t: 3
             },
             {
                 q:"second question",
-                a: "answer to second q"
+                a: "answer to second q",
+                t: 8
             },
             {
                 q:"third question",
-                a: "answer to third q"
+                a: "answer to third q",
+                t: 15
             }
         ];
         clock = {
@@ -77,6 +80,9 @@ describe("Quiz", function(){
         spyOn(clock, 'getIntervalMilSec');
         quiz.showClockInterval();
         expect(clock.getIntervalMilSec).toHaveBeenCalled();
+      });
+      it("sets the clock interval that comes from the JSON data", function(){
+        expect(quiz.getTimeIntervalIfPresent(0)).toEqual(3000);
       });
 
     });
