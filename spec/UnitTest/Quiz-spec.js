@@ -63,6 +63,18 @@ describe("Quiz", function(){
 
     it("shows how many questions are included in the quiz", function(){
       expect(quiz.questionsLength()).toEqual(3);
-    })
+    });
+
+    it("has a boolean that defines if the current question is the last question", function(){
+    quiz.askQuestion(2);
+    expect(quiz.isLastQuestionAsked()).toEqual(true);
+   });
+
+   it("has a boolean that defines if the current question is the last question", function(){
+   quiz.askQuestion(1);
+   expect(quiz.isLastQuestionAsked()).toEqual(false);
+  });
+
+
 
 })
