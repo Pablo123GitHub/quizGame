@@ -13,6 +13,18 @@ describe('Starting the game, answering the first question, the second one is dis
 
     })
 
+    it('prevents the user from submitting an empty answer', function(){
+      cy.get('input.answer_submission')
+        .should('be.empty')
+
+        cy.get('input.submit')
+          .click()
+
+        cy.url()
+            .should('include', 'play/0')
+
+    });
+
     it('takes the user from / to play/0 and then to answer/0', function() {
 
         cy.get('input.answer_submission')
@@ -111,8 +123,6 @@ describe('Starting the game, answering the first question, the second one is dis
         cy.url()
           .should('include', "answer/2")
 
-
-
     });
 
     it("does not contain the Next Question button, and displays the Show Score button", function(){
@@ -135,15 +145,6 @@ describe('Starting the game, answering the first question, the second one is dis
         .should('include', 'score')
 
     });
-
-
-
-
-
-
-
-
-
 
   })
 })

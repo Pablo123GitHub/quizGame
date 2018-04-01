@@ -10,8 +10,12 @@
 </div>
 
 <form class="inputClass flexItem" action="/answer/:numberanswer" method="post" id="form_answer">
-    <input class="answer_submission" placeholder="your answer" type="text" name="answerSubmission"><br> <br>
-
+    <input required class="answer_submission"
+    placeholder="your answer" type="text"
+    name="answerSubmission"
+    oninvalid="this.setCustomValidity('Field cannot be empty. Have a guess !')"
+    oninput="setCustomValidity('')"
+    ><br> <br>
     <input class="submit" type="submit" value="Submit" >
 </form>
 
