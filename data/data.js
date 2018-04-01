@@ -1,7 +1,7 @@
 module.exports = [{
     q: "Which of the following words is a palindrome: yacht, airplane, racecar, train?",
     a: "racecar",
-    t: 30
+    t: 3
 },
     {
         q: "The beaver is the national emblem of which country?",

@@ -37,10 +37,33 @@ describe('Start the game, answer questions one after the other, then land on Sco
               .should('include', 'answer/0')
     });
 
-    it('checks that the timer exists when you reach first question', function() {
+    it('checks that the timer exists and checks if correct message is displayed after 3 seconds ', function() {
+      // https://on.cypress.io/promise
+      let waited = false
+      cy.get('#timer_div_bis').should('not.contain', 'Time is up')
 
-        cy.get('.timer_class')
-          .should('contain', 'timer placeholder')
+      function waitOneSecond () {
+        // return a promise that resolves after 1 second
+        return new Cypress.Promise(function (resolve, reject) {
+          setTimeout(function () {
+            // set waited to true
+            waited = true
+
+            // resolve with 'foo' string
+            resolve('foo')
+          }, 3000)
+        })
+      }
+
+      cy.then(function () {
+        // return a promise to cy.then() that
+        // is awaited until it resolves
+        return waitOneSecond().then(function () {
+          expect(waited).to.be.true
+        })
+      })
+      cy.get('#timer_div_bis').should('contain', 'Time is up')
+
     });
 
     it('shows congratulate div element if answer correct + does not show the correct answer and move on to the next question', function() {
