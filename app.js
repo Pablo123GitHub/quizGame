@@ -33,15 +33,22 @@ app.post("/play/:number", function(req, res){
 app.get("/play/:number", function(req, res){
     var session = req.session;
     var indexQuestion = req.params.number;
-    var quiz = new Quiz(data);
+    var quiz = new Quiz(data,new Clock() );
+    quiz.setClockInterval(10);
+
+    var intervalTime = quiz.showClockInterval();
 
     session.indexQuestion = indexQuestion;
     quiz.setIndex(indexQuestion);
     session.question = quiz.askQuestion(indexQuestion);
     session.answer = quiz.showAnswer();
 
+
    res.render("question", {
-     questionAtIndex: session.question})
+     questionAtIndex: session.question,
+     intervalTime: intervalTime
+
+   })
 });
 
 app.post("/answer/:numberanswer", function(req,res){
