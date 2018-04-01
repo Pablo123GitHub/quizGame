@@ -3,7 +3,10 @@
 <% if (isCorrectAnswer) {%>
 <h1 id="message_congratulation"> The answer is correct. CONGRATULATIONS !!! </h1>
 <% } else{ %>
+   <% if (answerSubmitted !== undefined) {%>
 <h1 id="message_wrong_answer"> <%= answerSubmitted %> is not the correct answer </h1>
+<% } %>
+
 <h1 > The correct answer is  </h1>
 
 <h2 id="correct_answer"> <%= correctAnswer %> </h2>
