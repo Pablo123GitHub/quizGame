@@ -7,6 +7,7 @@ describe("Quiz", function(){
     console.log("****************************");
     var quiz ;
     var data;
+    var clock;
 
     beforeEach(function(){
         data = [
@@ -23,9 +24,21 @@ describe("Quiz", function(){
                 a: "answer to third q"
             }
         ];
-        quiz = new Quiz(data);
+        clock = {
+      getIntervalMilSec: function() {
+
+      },
+      setIntervalCountDown: function(){
+
+      }
+    };
+
+    spyOn(clock, 'setIntervalCountDown');
+
+        quiz = new Quiz(data, clock);
 
     });
+
 
     it("outputs the  question listed at index 0 in the data array", function(){
         expect(quiz.askQuestion(0)).toEqual("first question");
@@ -39,16 +52,6 @@ describe("Quiz", function(){
     it("check answer is correct for the index ONE for which the question has just been asked", function(){
         quiz.askQuestion(1);
         expect(quiz.showAnswer()).toEqual("answer to second q");
-    });
-
-    it("returns false if the provided answer is not correct for very last question asked", function(){
-        quiz.askQuestion(1);
-        expect(quiz.isCorrectAnswer("this is the wrong answer")).toBe(false);
-    });
-
-    it("returns true if the provided answer is correct for very last question asked", function(){
-        quiz.askQuestion(1);
-        expect(quiz.isCorrectAnswer("answer to second q")).toBe(true);
     });
 
     it("shows index of the current question", function(){
@@ -65,16 +68,39 @@ describe("Quiz", function(){
       expect(quiz.questionsLength()).toEqual(3);
     });
 
-    it("has a boolean that defines if the current question is the last question", function(){
-    quiz.askQuestion(2);
-    expect(quiz.isLastQuestionAsked()).toEqual(true);
-   });
+    describe("test the clock prototype from Quiz", function(){
+      it("sets time interval to the clock object inside Quiz", function(){
+        quiz.setClockInterval(10);
+        expect(clock.setIntervalCountDown).toHaveBeenCalled();
 
-   it("has a boolean that defines if the current question is the last question", function(){
-   quiz.askQuestion(1);
-   expect(quiz.isLastQuestionAsked()).toEqual(false);
-  });
+      });
 
 
+    });
+
+    describe("use booleans to check if isLastQuestionAsked and isCorrectAnswer", function(){
+
+          it("has a boolean that defines if the current question is the last question", function(){
+          quiz.askQuestion(2);
+          expect(quiz.isLastQuestionAsked()).toEqual(true);
+         });
+
+         it("has a boolean that defines if the current question is the last question", function(){
+         quiz.askQuestion(1);
+         expect(quiz.isLastQuestionAsked()).toEqual(false);
+        });
+
+          it("returns false if the provided answer is not correct for very last question asked", function(){
+              quiz.askQuestion(1);
+              expect(quiz.isCorrectAnswer("this is the wrong answer")).toBe(false);
+          });
+
+          it("returns true if the provided answer is correct for very last question asked", function(){
+              quiz.askQuestion(1);
+              expect(quiz.isCorrectAnswer("answer to second q")).toBe(true);
+          });
+
+
+    })
 
 })
