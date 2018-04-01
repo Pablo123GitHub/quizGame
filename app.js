@@ -34,12 +34,12 @@ app.get("/play/:number", function(req, res){
     var session = req.session;
     var indexQuestion = req.params.number;
     var quiz = new Quiz(data,new Clock() );
+    quiz.setIndex(indexQuestion);
     quiz.setClockInterval(10);
-
     var intervalTime = quiz.showClockInterval();
 
     session.indexQuestion = indexQuestion;
-    quiz.setIndex(indexQuestion);
+
     session.question = quiz.askQuestion(indexQuestion);
     session.answer = quiz.showAnswer();
 

@@ -18,8 +18,7 @@ describe("Quiz", function(){
             },
             {
                 q:"second question",
-                a: "answer to second q",
-                t: 8
+                a: "answer to second q"
             },
             {
                 q:"third question",
@@ -78,6 +77,7 @@ describe("Quiz", function(){
       });
       it("GETS time interval from the clock object inside Quiz", function(){
         spyOn(clock, 'getIntervalMilSec');
+        quiz.setIndex(1);
         quiz.showClockInterval();
         expect(clock.getIntervalMilSec).toHaveBeenCalled();
       });
