@@ -25,7 +25,7 @@
     var card = new Card(<%- JSON.stringify(questionAtIndex) %>);
     card.buildCard();
     var timer = new Timer();
-    timer.buildTimer("timer placeholder");
+    timer.buildTimer(<%- JSON.stringify(intervalTime) %>);
 </script>
 
 <% include partials/footer %>
