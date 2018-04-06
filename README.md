@@ -70,6 +70,11 @@ In order to run the app, the [nodemon](https://github.com/remy/nodemon) package 
 ```
 npm install -g nodemon
 ```
+Alternatively you may want to add nodemon to the dependencies:
+
+```
+npm install --save-dev nodemon
+```
 
 Then you can run the app with :
 
