@@ -1,6 +1,6 @@
 ###  Quiz Game
 
-Tech test for HegartyMaths : Build a Quiz Game.
+Tech test : Build a Quiz Game.
 
 
 ### User stories
