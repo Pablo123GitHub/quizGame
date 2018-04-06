@@ -104,3 +104,36 @@ footer {
     position: absolute;
     bottom: 0px;
 }
+
+div.photo {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+div.photo::after {
+  content: '';
+  display: block;
+  padding-top: 50%;
+}
+
+.center {
+margin: auto;
+width: 50%;
+}
+
+@media screen and (max-width: 550px) {
+
+form.center {
+  position: fixed;
+   margin: 0;
+}
+}
+
+
+/* @media screen and (max-width: 550px) {
+
+  div.photo{
+      box-shadow: 0 0 30px 40px grey inset;
+  }
+} */
