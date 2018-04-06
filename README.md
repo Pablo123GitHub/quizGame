@@ -64,7 +64,6 @@ From Terminal (in the root folder), we can install the dependencies with :
 npm install
 
 ```
-
 In order to run the app, the [nodemon](https://github.com/remy/nodemon) package needs to be installed globally :
 
 ```
@@ -132,8 +131,6 @@ npm run cypress:open
 ```
 
 ### More details about the tests :
-
-Three types of tests:
 
 - the tests located under spec/UnitTest are testing the logic of the Quiz and Clock JavaScript objects:
 If we only see green dots on Terminal, it means that they are passing.
