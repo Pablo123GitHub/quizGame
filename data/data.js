@@ -1,15 +1,26 @@
 module.exports = [{
-    q: "Which of the following words is a palindrome: yacht, airplane, racecar, train?",
-    a: "racecar",
+    q: "What was the first name of the Spanish artist Dali?",
+    a: "Salvador",
     t: 3
 },
     {
-        q: "The beaver is the national emblem of which country?",
-        a: "Canada",
+        q: "How many days are there in February in a leap year? ",
+        a: "29",
         t: 21
     },
     {
-        q: "What is the name of Batman's butler?",
-        a: "Alfred"
+        q: "Which dance move, in which the dancer moves backwards, was made popular by Michael Jackson?",
+        a: "Moonwalk",
+        t: 21
+    },
+    {
+        q: "What colour is the circle on the Japanese flag?",
+        a: "red",
+        t: 30
+    },
+    {
+        q: "If a letter of the alphabet is not a vowel, what must it be instead?",
+        a: "consonant",
+        t: 15
     }
 ];
